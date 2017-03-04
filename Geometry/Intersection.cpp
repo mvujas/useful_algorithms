@@ -9,6 +9,8 @@
 #define min(a, b) ((a < b) ? a : b)
 #define max(a, b) ((a > b) ? a : b)
 #define intersect(a, b, c, d) (!sameSide(a, b, c, d) && !sameSide(c, d, a, b) && (min(a.x, b.x) <= max(c.x, d.x)) && (min(c.x, d.x) <= max(a.x, b.x)) && (min(a.y, b.y) <= max(c.y, d.y)) && (min(c.y, d.y) <= max(a.y, b.y)))
+#define dist(a, b) (sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)))
+#define distPointToLine(c, a, b) (abs(crossProduct(a, b, c)) / dist(a, b))
 
 using namespace std;
 
@@ -16,13 +18,11 @@ struct Point {
     double x, y;
     Point(double x, double y)
         : x(x)
-        , y(y)
-    {};
+        , y(y) {};
 };
 
 // Implementation using inline functions
-/*
-inline double min(double a, double b) {
+/*inline double min(double a, double b) {
     return (a < b) ? a : b;
 }
 
@@ -58,11 +58,20 @@ inline bool intersect(Point a, Point b, Point c, Point d) {
             min(a.y, b.y) <= max(c.y, d.y) &&
             min(c.y, d.y) <= max(a.y, b.y));
 }
-*/
+
+inline double dist(Point a, Point b) {
+    return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+}
+
+inline double distPointToLine(Point c, Point a, Point b) {
+    return abs(crossProduct(a, b, c)) / dist(a, b);
+}*/
 
 int main()
 {
     Point a(0, 1), b(2, 1), c(2, 0), d(2, 1);
-    printf("%s.\n", intersect(a, b, c, d) ? "Da" : "Ne");
+    printf("Da li se prave |ab| i |cd| seku? %s.\n", intersect(a, b, c, d) ? "Da" : "Ne");
+    printf("|ab| = %.2f\n|cd| = %.2f\n", dist(a, b), dist(c, d));
+    printf("Udaljenost c od prave ab = %.2f", distPointToLine(c, a, b));
     return 0;
 }
