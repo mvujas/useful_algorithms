@@ -6,8 +6,9 @@ using namespace std;
 inline lld poww(lld n, lld k) {
     lld res = 1;
     while(k > 0) {
-        if(k&1) // checks if k is odd number
+        if(k&1) // checks if k is odd number( <-> (k % 2 == 1))
             res *= n;
+
         k >>= 1;
         n *= n;
     }
