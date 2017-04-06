@@ -1,4 +1,5 @@
 #include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -30,6 +31,13 @@ int main()
     B ^= A;
     A ^= B;
     cout << "After swaping: " << A << " " << B << endl;
+
+    string S{"Programming is fun!"};
+    for_each(S.begin(), S.end(), [] (auto& c) { c |= ' '; }); // lowercase whole string
+    cout << S << endl;
+    S[0] = 'P';
+    for_each(S.begin(), S.end(), [] (auto& c) { c &= '_'; }); // uppercase whole string, some characters get lost, but letters are still there
+    cout << S << endl;
     return 0;
 }
 
