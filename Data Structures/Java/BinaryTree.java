@@ -1,5 +1,4 @@
-
-class Tree {
+class BinaryTree {
   class Node {
     int data;
     Node left, right;
