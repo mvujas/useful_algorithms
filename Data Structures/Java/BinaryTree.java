@@ -11,7 +11,7 @@ class BinaryTree {
   }
 
   Node root;
-  Tree() {
+  BinaryTree() {
     this.root = null;
   }
 
@@ -76,7 +76,7 @@ class BinaryTree {
 
 
   public static void main(String[] args) {
-    Tree a = new Tree();
+    BinaryTree a = new BinaryTree();
     a.insert(5);
     a.insert(1);
     a.insert(2);
