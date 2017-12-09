@@ -8,7 +8,7 @@ template<typename T> class PriorityQueue;
 template<typename T>
 class Node {
 public:
-    T data;
+    const T data;
     Node<T>* left;
     Node<T>* right;
     Node(T data)
@@ -54,7 +54,7 @@ private:
         cout << ")";
     }
 
-    // For custom classes you have to define operator< !!!
+    // For custom classes you have to define operator< for constant operands !!!
     void _push(Node<T>** curr, T& el) {
         if(*curr == NULL)
             *curr = new Node<T>(el);
